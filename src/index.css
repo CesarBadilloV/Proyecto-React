@@ -1,0 +1,32 @@
+/* ══════════════════════════════════════════
+   VARIABLES
+══════════════════════════════════════════ */
+:root {
+  --primary-color:     #8a1538;
+  --secondary-color:   #a03554;
+  --emphasis-color:    #6c102c;
+  --background-color:  #f7f3f1;
+  --text-color:        #333333;
+  --light-gray:        #e9e9e9;
+  --white:             #ffffff;
+  --shadow:            0 2px 8px rgba(0,0,0,0.1);
+  --shadow-hover:      0 6px 20px rgba(138,21,56,0.12);
+  --transition:        all 0.2s ease;
+  --transition-smooth: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  --border-radius:     8px;
+}
+
+/* ══════════════════════════════════════════
+   BASE
+══════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.5;
+  font-size: 16px; 
+}
