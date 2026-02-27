@@ -4,8 +4,10 @@ import './css/carousel.css'
 import './App.css'
 import './css/timeline.css';
 import './css/education.css';
+import './css/footer.css'
 import module1 from './modules/module1.jsx';
 import aboutme from './modules/aboutme.jsx'
+import Footer from './modules/footer.jsx';
 
 
 function App() {
@@ -13,6 +15,7 @@ function App() {
     <>
       {module1()}
       {aboutme()}
+      {Footer()}
     </>
   )
 }
