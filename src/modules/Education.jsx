@@ -1,7 +1,7 @@
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 const education = [
   {
-    id: 1,
+    id: 2,
     degree: "TSU en Tecnologías de la Información",
     area: "Área: Desarrollo de Software Multiplataforma",
     institution: "Universidad Tecnológica de Tamaulipas Norte",
@@ -11,7 +11,7 @@ const education = [
     current: true,
   },
   {
-    id: 2,
+    id: 1,
     degree: "Bachillerato Técnico",
     area: "Especialidad: Mecánica Industrial",
     institution: 'CBIS No. 7 "José María Morelos y Pavón"',

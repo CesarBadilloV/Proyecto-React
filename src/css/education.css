@@ -50,7 +50,7 @@
 
 /* Card educación — sobreescritura puntual de .card */
 .edu-card {
-  flex: none;        /* anula el flex: 0 0 33% del carousel */
+  flex: none;        
   cursor: default;
   gap: 0.6rem;
   padding: 1.6rem;

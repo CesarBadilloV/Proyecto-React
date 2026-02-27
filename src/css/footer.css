@@ -1,0 +1,166 @@
+/* footer.css
+   Hereda variables de App.css: --secondary-color, --primary-color,
+   --background-color, --white, --transition-smooth, --shadow-hover
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* ── Contenedor ───────────────────────────────────────────────────────────── */
+.footer {
+  width: 100%;
+  position: relative;
+  margin-top: 2rem;
+  overflow: hidden;
+}
+
+/* Glow ambiental de fondo */
+.footer-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 70% 60% at 50% 100%,
+    rgba(from var(--secondary-color) r g b / 0.06) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* Línea superior decorativa */
+.footer-top-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(from var(--secondary-color) r g b / 0.35) 30%,
+    rgba(from var(--secondary-color) r g b / 0.35) 70%,
+    transparent 100%
+  );
+  margin-bottom: 0;
+}
+
+/* Inner */
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2.5rem 2rem 2rem;
+}
+
+/* ── Brand ────────────────────────────────────────────────────────────────── */
+.footer-brand {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.footer-name {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--white);
+  text-shadow: 0 0 20px rgba(from var(--secondary-color) r g b / 0.3);
+}
+
+.footer-tagline {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(from var(--white) r g b / 1.5);
+}
+
+/* ── Links ────────────────────────────────────────────────────────────────── */
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.footer-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 1.1rem;
+  background: linear-gradient(145deg, #0e0e0e 0%, #0a140a 100%);
+  border: 1px solid rgba(from var(--primary-color) r g b / 0.2);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text-color);
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Línea de acento al hover */
+.footer-link::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--secondary-color), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.footer-link:hover {
+  border-color: rgba(from var(--secondary-color) r g b / 0.4);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+}
+.footer-link:hover::before { opacity: 1; }
+
+/* Icono */
+.footer-link-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--secondary-color);
+  transition: var(--transition-smooth);
+}
+.footer-link:hover .footer-link-icon {
+  filter: drop-shadow(0 0 6px rgba(from var(--secondary-color) r g b / 0.8));
+}
+
+/* Texto */
+.footer-link-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.footer-link-label {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--secondary-color);
+}
+
+.footer-link-sublabel {
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: rgba(from var(--white) r g b / 0.45);
+  letter-spacing: 0.3px;
+}
+
+/* ── Copyright ────────────────────────────────────────────────────────────── */
+.footer-copy {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(from var(--secondary-color) r g b / 0.25);
+  text-align: center;
+  padding-bottom: 0.5rem;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .footer-links    { flex-direction: column; align-items: stretch; }
+  .footer-link     { justify-content: flex-start; }
+}
