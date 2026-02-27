@@ -1,13 +1,15 @@
-/* timeline.css
-   Hereda los estilos de .card, .card-title, .card-date, .card-tags, .tag, .card-number
-   definidos en carousel.css — aquí solo se agregan los estilos propios del timeline.
-   ─────────────────────────────────────────────────────────────────────────────── */
+/* timeline.css OPTIMIZADO
+   Soporta cualquier cantidad de elementos sin romper el diseño
+   ─────────────────────────────────────────────────────────────────────────── */
 
 /* ── Sección contenedora ──────────────────────────────────────────────────── */
 .tl-section {
   width: 100%;
-  padding: 2.5rem 0 1.5rem;
+  max-width: 1400px; 
+  margin: 0 auto;    
+  padding: 2.5rem 3rem;
   position: relative;
+  overflow: hidden;  
 }
 
 /* ── Header ───────────────────────────────────────────────────────────────── */
@@ -43,7 +45,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 10;
+  z-index: 100;
   background: rgba(10, 10, 10, 0.85);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(from var(--secondary-color) r g b / 0.18);
@@ -59,23 +61,26 @@
   justify-content: center;
   transition: var(--transition-smooth);
 }
+
 .tl-arrow:hover {
   background: rgba(from var(--secondary-color) r g b / 0.15);
   color: var(--secondary-color);
   border-color: rgba(from var(--secondary-color) r g b / 0.4);
 }
+
 .tl-arrow--left {
   left: 0.25rem;
 }
+
 .tl-arrow--right {
   right: 0.25rem;
 }
 
 /* ── Track (wrapper relativo para la línea central) ───────────────────────── */
 .tl-track {
-  background: linear-gradient(black, black) left no-repeat;
-  background-size: 100% 25%, auto;
   position: relative;
+  width: 100%;
+  max-width: 200vw;  
   overflow: hidden;
 }
 
@@ -103,28 +108,40 @@
   display: flex;
   align-items: center;
   overflow-x: auto;
-  overflow-y: visible;
-  padding: 1.5rem 3.5rem;
+  overflow-y: hidden;
+  padding: 0.25rem 4rem;
   gap: 1.25rem;
   cursor: grab;
   scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  
+  /* Esto obliga al contenedor a respetar el ancho del padre */
+  width: auto;
+  box-sizing: border-box;
+  flex-wrap: nowrap; 
 }
+
 .tl-scroll:active {
   cursor: grabbing;
 }
 
+/* Scrollbar personalizado */
 .tl-scroll::-webkit-scrollbar {
-  height: 4px;
+  height: 6px;
 }
+
 .tl-scroll::-webkit-scrollbar-track {
   background: rgba(from var(--secondary-color) r g b / 0.04);
   border-radius: 2px;
+  margin: 0 3.5rem;
 }
+
 .tl-scroll::-webkit-scrollbar-thumb {
   background: rgba(from var(--secondary-color) r g b / 0.22);
-  border-radius: 2px;
+  border-radius: 3px;
+  transition: background 0.2s ease;
 }
+
 .tl-scroll::-webkit-scrollbar-thumb:hover {
   background: rgba(from var(--secondary-color) r g b / 0.45);
 }
@@ -135,12 +152,15 @@
   flex-direction: column;
   align-items: center;
   flex-shrink: 0;
+  flex: 0 0 260px;
+  scroll-snap-align: start;
   width: 260px;
   scroll-snap-align: center;
+  height: 100%;
 }
 
 .tl-spacer {
-  height: 185px; /* misma altura que la card + gaps */
+  height: 185px;
   width: 100%;
   flex-shrink: 0;
 }
@@ -148,38 +168,43 @@
 /* ── Sobreescritura puntual de .card para el timeline ─────────────────────── */
 .tl-card {
   width: 100%;
-  flex: none; /* anula el flex: 0 0 33% del carousel */
-  cursor: pointer; /* cambia de cursor: default a pointer */
-  padding: 1.1rem; /* padding más compacto */
+  flex: none;
+  cursor: pointer;
+  padding: 1.1rem;
   gap: 0.5rem;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* La card "arriba" sube al hover; la de "abajo" baja */
+/* Animación de hover */
 .tl-card--above:hover {
-  transform: translateY(-5px);
-}
-.tl-card--below:hover {
-  transform: translateY(5px);
+  transform: translateY(-8px);
 }
 
-/* Línea de acento: arriba para las que están encima, abajo para las de debajo */
+.tl-card--below:hover {
+  transform: translateY(8px);
+}
+
+/* Línea de acento */
 .tl-card--above::before {
   top: 0;
   bottom: auto;
 }
+
 .tl-card--below::before {
   bottom: 0;
   top: auto;
 }
 
-/* Accent color por tipo (prácticas = secondary, proyectos = azul) */
+/* Estilos de proyectos */
 .tl-card--project {
   border-color: rgba(100, 200, 255, 0.1);
 }
+
 .tl-card--project:hover {
   border-color: rgba(100, 200, 255, 0.35);
   box-shadow: 0 10px 30px rgba(100, 200, 255, 0.12);
 }
+
 .tl-card--project::before {
   background: linear-gradient(
     90deg,
@@ -201,7 +226,6 @@
 }
 
 .tl-badge--sm {
-  /* versión compacta dentro de la card */
   font-size: 0.5rem;
   letter-spacing: 1.5px;
 }
@@ -218,13 +242,12 @@
   padding: 0.2rem 0.6rem;
 }
 
-/* Badge sin borde dentro de la card (solo color) */
 .tl-card .tl-badge {
   border: none;
   padding: 0;
 }
 
-/* ── Tags del proyecto: color azul ───────────────────────────────────────── */
+/* Tags de proyectos */
 .tl-card--project .tag {
   color: #64c8ff;
   background: rgba(100, 200, 255, 0.07);
@@ -250,9 +273,11 @@
   opacity: 0;
   transition: opacity 0.2s ease;
 }
+
 .tl-card:hover .tl-hint {
   opacity: 0.8;
 }
+
 .tl-card--project .tl-hint {
   color: #64c8ff;
 }
@@ -264,6 +289,7 @@
   background: rgba(from var(--secondary-color) r g b / 0.25);
   flex-shrink: 0;
 }
+
 .tl-card--project ~ .tl-connector,
 .tl-item:has(.tl-card--project) .tl-connector {
   background: rgba(100, 200, 255, 0.2);
@@ -279,9 +305,11 @@
   flex-shrink: 0;
   z-index: 2;
 }
+
 .tl-node--circle {
   border-radius: 50%;
 }
+
 .tl-node--square {
   border-radius: 2px;
 }
@@ -293,6 +321,7 @@
   border-color: var(--secondary-color);
   box-shadow: 0 0 14px rgba(from var(--secondary-color) r g b / 0.8);
 }
+
 .tl-item:hover .tl-node--circle {
   width: 14px;
   height: 14px;
@@ -307,14 +336,14 @@
   font-family: "Orbitron", monospace;
   font-size: 0.52rem;
   letter-spacing: 2px;
-  color: rgba(from var(--white) r g b / .80);
+  color: rgba(from var(--white) r g b / 0.8);
   text-transform: uppercase;
   margin-top: 0.5rem;
 }
 
-/* ══════════════════════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════════════════
    PÁGINA DE DETALLE
-   ══════════════════════════════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════════════════════════════ */
 .tl-detail {
   position: fixed;
   inset: 0;
@@ -342,7 +371,6 @@
   padding: 2.5rem 2rem 4rem;
 }
 
-/* Botón volver — hereda la estética de .card */
 .tl-back-btn {
   display: inline-flex;
   align-items: center;
@@ -359,14 +387,15 @@
   border-radius: 4px;
   transition: var(--transition-smooth);
   margin-bottom: 2.5rem;
+  margin-right: 1.8rem;
 }
+
 .tl-back-btn:hover {
   color: var(--secondary-color);
   border-color: rgba(from var(--secondary-color) r g b / 0.5);
   box-shadow: var(--shadow-hover);
 }
 
-/* Título de detalle */
 .tl-detail-title {
   font-family: "Orbitron", monospace;
   font-size: clamp(1.2rem, 3vw, 1.9rem);
@@ -385,7 +414,6 @@
   margin-bottom: 2rem;
 }
 
-/* Grid de metadata */
 .tl-detail-meta {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -421,7 +449,6 @@
   color: rgba(from var(--white) r g b / 0.75);
 }
 
-/* Tags en detalle */
 .tl-detail-tags-section {
   display: flex;
   flex-direction: column;
@@ -429,7 +456,6 @@
   margin-bottom: 2rem;
 }
 
-/* Cuerpo del detalle */
 .tl-detail-body {
   border-top: 1px solid rgba(from var(--secondary-color) r g b / 0.1);
   padding-top: 2rem;
@@ -441,10 +467,32 @@
 }
 
 /* ── Responsive ───────────────────────────────────────────────────────────── */
-@media (max-width: 700px) {
-  .tl-item {
-    width: 80vw;
+@media (max-width: 1024px) {
+  .tl-scroll {
+    padding: 1.5rem 2.5rem;
   }
+  
+  .tl-item {
+    width: 240px;
+  }
+}
+
+@media (max-width: 700px) {
+  .tl-scroll {
+    padding: 1.5rem 2rem;
+    min-height: 420px;
+  }
+  
+  .tl-item {
+    width: 75vw;
+  }
+  
+  .tl-arrow {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
+  }
+  
   .tl-spacer {
     height: 170px;
   }

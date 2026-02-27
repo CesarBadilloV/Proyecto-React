@@ -8,7 +8,7 @@ const timelineData = [
     title: "Aplicación Web de Atención al Cliente",
     company: "Proyecto Integrador — Taller Los 3 Valerio",
     period: "Ago 2024 – Dic 2024",
-    location: "3er Cuatrimestre — UTTN",
+    location: "Proyecto Escolar — UTTN",
     tags: ["PHP", "MySQL", "HTML", "CSS", "XAMPP"],
     summary: "Plataforma web con landing de publicidad y dashboard de gestión operativa para taller de restauración de bolsas de aire y cinturones de seguridad.",
     details: `Proyecto integrador desarrollado en colaboración con un taller especializado en restauración y reparación de bolsas de aire y cinturones de seguridad.
@@ -100,6 +100,110 @@ En ambos proyectos asumí la responsabilidad completa del ciclo de desarrollo:
 
 Stack tecnológico: Node.js · JavaScript · Microsoft SQL · HTML · CSS`,
   },
+  {
+  id: 5,
+  type: "project",
+  title: "Dice Roller — Aplicación Web con Motor de Cálculo en API",
+  company: "Proyecto Personal",
+  period: "2025",
+  location: "Desarrollo Independiente",
+  tags: ["C#", "HTML", "CSS", "JavaScript", "API REST"],
+  summary: "Aplicación web para simulación de tiradas de dados mediante algoritmos probabilísticos implementados en una API REST desarrollada en C#.",
+  details: `Aplicación desarrollada como proyecto personal, enfocada en la simulación precisa de tiradas de dados utilizadas en juegos de mesa y entornos de rol.
+
+Funcionalidades principales:
+▸ Generación de tiradas configurables (d4, d6, d8, d10, d12, d20, etc.).
+▸ Implementación de lógica probabilística y validación de parámetros desde el backend.
+▸ Comunicación frontend-backend mediante consumo de API REST.
+
+La arquitectura del proyecto separa claramente la capa de presentación y la capa lógica, delegando todo el procesamiento matemático y algorítmico a una API desarrollada en C#, mientras que el frontend ligero en HTML, CSS y JavaScript se encarga de la interacción con el usuario.
+
+Mis responsabilidades:
+▸ Diseño de la arquitectura general del sistema.
+▸ Desarrollo completo de la API REST en C#.
+▸ Implementación de los algoritmos de generación aleatoria y validación.
+▸ Desarrollo del frontend y su integración con el backend.
+
+Stack tecnológico: C# · HTML · CSS · JavaScript`
+},
+{
+  id: 6,
+  type: "project",
+  title: "Simulador Visual del Algoritmo Torre de Hanói",
+  company: "Proyecto Académico",
+  period: "2025",
+  location: "UTTN",
+  tags: ["Python", "Tkinter", "Algoritmos"],
+  summary: "Aplicación de escritorio que demuestra visualmente el funcionamiento recursivo del algoritmo Torre de Hanói.",
+  details: `Aplicación desarrollada con fines educativos para visualizar paso a paso la ejecución del algoritmo recursivo de la Torre de Hanói.
+
+Funcionalidades principales:
+▸ Representación gráfica dinámica del movimiento de discos.
+▸ Ejecución automática y modo paso a paso.
+▸ Visualización de complejidad en función del número de discos.
+
+El proyecto enfatiza la comprensión de recursividad, pila de llamadas y análisis de complejidad temporal O(2^n).
+
+Mis responsabilidades:
+▸ Implementación del algoritmo recursivo.
+▸ Desarrollo de interfaz gráfica con Tkinter.
+▸ Integración entre lógica algorítmica y representación visual.
+▸ Pruebas funcionales del sistema.
+
+Stack tecnológico: Python · Tkinter · Algoritmos`
+},
+{
+  id: 7,
+  type: "project",
+  title: "Prototipo Web para Gestión de Campañas RPG",
+  company: "Proyecto Personal",
+  period: "2024",
+  location: "Desarrollo Independiente",
+  tags: ["React", "JavaScript", "Node.js", "API REST"],
+  summary: "Plataforma web para gestión centralizada de personajes, sesiones y recursos para juegos de rol.",
+  details: `Aplicación diseñada para centralizar herramientas comúnmente dispersas en juegos de rol de mesa, integrando gestión de personajes, control de sesiones y utilidades complementarias.
+
+Funcionalidades principales:
+▸ Creación y edición de fichas de personaje.
+▸ Registro estructurado de sesiones.
+▸ Integración con motor de tiradas de dados vía API.
+
+La arquitectura implementa un modelo cliente-servidor con frontend desacoplado y backend orientado a servicios, permitiendo escalabilidad modular.
+
+Mis responsabilidades:
+▸ Diseño completo de la arquitectura del sistema.
+▸ Desarrollo del frontend en React.
+▸ Implementación del backend y endpoints REST.
+▸ Modelado de base de datos y pruebas de integración.
+
+Stack tecnológico: React · JavaScript · Node.js · API REST`
+},
+{
+  id: 8,
+  type: "project",
+  title: "FocusAgenda — Planificador con Temporizador Pomodoro",
+  company: "Proyecto Personal",
+  period: "2025",
+  location: "Desarrollo Independiente",
+  tags: ["JavaScript", "HTML", "CSS", "IndexedDB"],
+  summary: "Aplicación web de productividad que integra temporizador Pomodoro con planificación de tareas y almacenamiento local persistente.",
+  details: `Aplicación desarrollada como solución personal enfocada en la gestión del tiempo y organización de tareas, especialmente orientada a usuarios que requieren estructuras simples y efectivas de concentración.
+
+Funcionalidades principales:
+▸ Temporizador Pomodoro configurable con ciclos automáticos.
+▸ Planificador diario con almacenamiento persistente mediante IndexedDB.
+▸ Gestión de tareas con estados dinámicos y control de progreso.
+
+El proyecto implementa una arquitectura frontend modular con separación clara entre lógica de negocio y manipulación del DOM, garantizando mantenibilidad y escalabilidad futura.
+
+Mis responsabilidades:
+▸ Diseño de la arquitectura del frontend.
+▸ Implementación de la lógica del temporizador y persistencia local.
+▸ Modelado de datos en IndexedDB.
+▸ Diseño de interfaz y experiencia de usuario.
+
+Stack tecnológico: JavaScript · HTML · CSS · IndexedDB`
+},
 ];
 
 

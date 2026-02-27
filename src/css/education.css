@@ -5,11 +5,11 @@
 
 /* ── Wrapper general ──────────────────────────────────────────────────────── */
 .edu-wrapper {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  padding: 3rem 0 2rem;
+    width: 100%;
+    display: flex;
+    gap: 3rem;
+    padding: 3rem 0 2rem;
+    flex-direction: column;
 }
 
 /* ── Bloque (Educación / Idiomas / Competencias) ──────────────────────────── */
@@ -148,7 +148,7 @@
 .edu-skills-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: 0.45rem;
 }
 
 .edu-skill-card {

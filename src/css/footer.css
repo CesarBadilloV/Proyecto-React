@@ -9,6 +9,15 @@
   position: relative;
   margin-top: 2rem;
   overflow: hidden;
+  background: linear-gradient(
+    145deg,
+    rgba(14, 14, 14, 0.5) 0%,
+    rgba(10, 20, 10, 0.5) 100%
+  );
+  border: 1px solid rgba(from var(--primary-color) r g b / 0.2);
+  backdrop-filter: blur(8px);
+  border-radius: 14px;
+  margin-bottom: 0.55rem;
 }
 
 /* Glow ambiental de fondo */
@@ -55,7 +64,7 @@
 }
 
 .footer-name {
-  font-family: 'Orbitron', monospace;
+  font-family: "Orbitron", monospace;
   font-size: clamp(0.9rem, 2.5vw, 1.2rem);
   font-weight: 900;
   letter-spacing: 3px;
@@ -65,7 +74,7 @@
 }
 
 .footer-tagline {
-  font-family: 'Orbitron', monospace;
+  font-family: "Orbitron", monospace;
   font-size: 0.6rem;
   letter-spacing: 3px;
   text-transform: uppercase;
@@ -97,11 +106,18 @@
 
 /* Línea de acento al hover */
 .footer-link::before {
-  content: '';
+  content: "";
   position: absolute;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--secondary-color), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--secondary-color),
+    transparent
+  );
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -111,7 +127,9 @@
   box-shadow: var(--shadow-hover);
   transform: translateY(-3px);
 }
-.footer-link:hover::before { opacity: 1; }
+.footer-link:hover::before {
+  opacity: 1;
+}
 
 /* Icono */
 .footer-link-icon {
@@ -133,7 +151,7 @@
 }
 
 .footer-link-label {
-  font-family: 'Orbitron', monospace;
+  font-family: "Orbitron", monospace;
   font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -150,17 +168,22 @@
 
 /* ── Copyright ────────────────────────────────────────────────────────────── */
 .footer-copy {
-  font-family: 'Orbitron', monospace;
+  font-family: "Orbitron", monospace;
   font-size: 0.52rem;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: rgba(from var(--secondary-color) r g b / 0.25);
+  color: rgba(from var(--white) r g b / 0.25);
   text-align: center;
   padding-bottom: 0.5rem;
 }
 
 /* ── Responsive ───────────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
-  .footer-links    { flex-direction: column; align-items: stretch; }
-  .footer-link     { justify-content: flex-start; }
+  .footer-links {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .footer-link {
+    justify-content: flex-start;
+  }
 }
