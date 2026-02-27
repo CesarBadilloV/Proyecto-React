@@ -1,37 +1,49 @@
-.headerModule1 {
-    display: flex;
-    background-color: #f0f0f0;
-    padding: 20px;
-    text-align: center;
-    flex-direction: row;
-    gap: 20px;
-    justify-content: space-between;
-    align-items: center;
+h1 {
+  font-size: larger;
+  text-align: center;
+  color: #0e0e0e;
 }
 
-.headerModule1 h1 {
-  color: #333;
-  font-size: 24px;
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start; 
 }
 
-.navbarModule1 {
-    display: flex;
-    background-color: #e0e0e0;
-    padding: 10px;
+main h1 {                
+  display: flex;
+  justify-content: center;    
 }
 
-.navbarModule1 {
-    display: flex;
-}
+/* ── Header del CV ─────────────────── */
+    .cv-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
 
-.navbarModule1 a {
-  text-decoration: none;
-  color: #007bff;
-  font-weight: bold;
-}
+    .cv-name {
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(1.6rem, 5vw, 2.8rem);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
 
-.navbarModule1 a:hover {
-  color: #0056b3;
-}
+    .cv-role {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--secondary-color);
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-top: 0.4rem;
+      text-shadow: 0 0 20px rgba(46,204,46,0.4);
+    }
 
-
+    .cv-divider {
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--secondary-color), transparent);
+      margin: 1rem auto 0;
+    }

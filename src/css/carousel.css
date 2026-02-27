@@ -1,0 +1,127 @@
+
+    /* ── Tarjeta CV ────────────────────── */
+    .card {
+      flex: 0 0 calc(33.333% - 1rem);
+      max-width: 760px;
+      background: linear-gradient(145deg, #0e0e0e 0%, #0a140a 100%);
+      border: 1px solid rgba(26,155,26,0.2);
+      border-radius: 14px;
+      padding: 1.8rem 1.6rem;
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    /* línea superior de acento */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, var(--secondary-color) 50%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(46,204,46,0.4);
+      box-shadow: 0 16px 40px rgba(26,155,26,0.15);
+    }
+    .card:hover::before { opacity: 1; }
+
+    /* ── Número de sección ─────────────── */
+    .card-number {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.4rem;
+      font-family: 'Orbitron', monospace;
+      font-size: 0.65rem;
+      color: rgba(46,204,46,0.25);
+      letter-spacing: 1px;
+    }
+
+    /* ── Título ────────────────────────── */
+    .card-title {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--secondary-color);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding-bottom: 0.7rem;
+      border-bottom: 1px solid rgba(46,204,46,0.12);
+    }
+
+    /* ── Texto principal ───────────────── */
+    .card-text {
+      font-size: 0.875rem;
+      font-weight: 300;
+      color: rgba(232,245,232,0.75);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    /* ── Lista de items (skills/exp.) ──── */
+    .card-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
+    }
+
+    .card-list li {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: rgba(232,245,232,0.75);
+      line-height: 1.5;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .card-list li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--primary-color);
+      font-size: 0.7rem;
+      top: 2px;
+    }
+
+    /* ── Tags (tecnologías) ────────────── */
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.2rem;
+    }
+
+    .tag {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--secondary-color);
+      background: rgba(46,204,46,0.07);
+      border: 1px solid rgba(46,204,46,0.18);
+      border-radius: 4px;
+      padding: 3px 8px;
+      text-transform: uppercase;
+    }
+
+    /* ── Fecha (para experiencia) ──────── */
+    .card-date {
+      font-size: 0.72rem;
+      color: rgba(46,204,46,0.45);
+      font-family: 'Orbitron', monospace;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 700px) {
+      .card { flex: 0 0 82vw; min-width: unset; }
+    }
