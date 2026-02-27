@@ -1,7 +1,16 @@
 import MyInfo from "./MyInfo";
+import Experience from "./Experience";
+import Photo from "./photo";
 
-export default function aboutme() {
+export default function AboutMe() {
   return (
-    <MyInfo />
+    <>
+    <div className="parent">
+
+      <MyInfo />
+      <Experience />
+      <Photo />
+    </div>
+    </>
   );
 }

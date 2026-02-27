@@ -1,44 +1,61 @@
- :root {
-      --primary-color: #1a9b1a;
-      --secondary-color: #2ecc2e;
-      --emphasis-color: #0f6b0f;
-      --background-color: #0a0a0a;
-      --text-color: #e8f5e8;
-      --light-gray: #c8e6c8;
-      --white: #ffffff;
-      --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-      --shadow-hover: 0 6px 20px rgba(26, 155, 26, 0.35);
-      --transition: all 0.2s ease;
-      --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      --border-radius: 8px;
-    }
+:root {
+  --primary-color: #1a9b1a;
+  --secondary-color: #2ecc2e;
+  --emphasis-color: #0f6b0f;
+  --background-color: #0a0a0a;
+  --text-color: #e8f5e8;
+  --light-gray: #c8e6c8;
+  --white: #ffffff;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 6px 20px rgba(26, 155, 26, 0.35);
+  --transition: all 0.2s ease;
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --border-radius: 8px;
+  --secondary-color-rgb: 100, 200, 255;
+}
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    body {
-      background-color: var(--background-color);
-      font-family: 'Exo 2', sans-serif;
-      color: var(--text-color);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      overflow-x: hidden;
-    }
+body {
+  background-image: url("https://i.pinimg.com/originals/35/58/0d/35580d64b9b883fd0e0678595fc2aefd.gif");
+  background-size: cover; /* Ajusta el GIF para cubrir toda el área */
+  background-position: center; /* Centra el GIF */
+  background-repeat: no-repeat; /* Evita que se repita */
+  font-family: "Exo 2", sans-serif;
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  overflow-x: hidden;
+}
 
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 60% 40% at 20% 50%, rgba(26,155,26,0.08) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 60% at 80% 30%, rgba(46,204,46,0.05) 0%, transparent 70%);
-      pointer-events: none;
-    }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 60% 40% at 20% 50%,
+      rgba(26, 155, 26, 0.08) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 40% 60% at 80% 30%,
+      rgba(46, 204, 46, 0.05) 0%,
+      transparent 70%
+    );
+  pointer-events: none;
+}
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
