@@ -35,6 +35,8 @@ const skills = {
     { title: "Introduction to IoT", org: "Cisco", hours: 78 },
     { title: "Networking Essentials", org: "Cisco", hours: 78 },
     { title: "Haz de Tu Idea un Negocio", org: "CONDUSEF", hours: 50 },
+    { title: "Introduccion a la Ciberseguridad", org: "Cisco", hours: 78 },
+
   ],
   soft: ["Trabajo en equipo", "Proactividad", "Puntualidad", "Responsabilidad", "Gestión de tareas", "Resiliencia"],
 };
