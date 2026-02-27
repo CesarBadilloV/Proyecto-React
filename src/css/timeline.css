@@ -1,0 +1,451 @@
+/* timeline.css
+   Hereda los estilos de .card, .card-title, .card-date, .card-tags, .tag, .card-number
+   definidos en carousel.css — aquí solo se agregan los estilos propios del timeline.
+   ─────────────────────────────────────────────────────────────────────────────── */
+
+/* ── Sección contenedora ──────────────────────────────────────────────────── */
+.tl-section {
+  width: 100%;
+  padding: 2.5rem 0 1.5rem;
+  position: relative;
+}
+
+/* ── Header ───────────────────────────────────────────────────────────────── */
+.tl-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.tl-header-title {
+  font-family: "Orbitron", monospace;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--text-color);
+  text-shadow: 0 0 20px rgba(from var(--secondary-color) r g b / 0.4);
+}
+
+.tl-header-line {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--secondary-color),
+    transparent
+  );
+  margin: 0.6rem auto 0;
+}
+
+/* ── Flechas de navegación ────────────────────────────────────────────────── */
+.tl-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(from var(--secondary-color) r g b / 0.18);
+  color: rgba(from var(--secondary-color) r g b / 0.45);
+  width: 34px;
+  height: 34px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Orbitron", monospace;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+}
+.tl-arrow:hover {
+  background: rgba(from var(--secondary-color) r g b / 0.15);
+  color: var(--secondary-color);
+  border-color: rgba(from var(--secondary-color) r g b / 0.4);
+}
+.tl-arrow--left {
+  left: 0.25rem;
+}
+.tl-arrow--right {
+  right: 0.25rem;
+}
+
+/* ── Track (wrapper relativo para la línea central) ───────────────────────── */
+.tl-track {
+  background: linear-gradient(black, black) left no-repeat;
+  background-size: 100% 25%, auto;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Línea horizontal central */
+.tl-center-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(from var(--secondary-color) r g b / 0.18) 3%,
+    rgba(from var(--secondary-color) r g b / 0.18) 97%,
+    transparent 100%
+  );
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Scroll container ─────────────────────────────────────────────────────── */
+.tl-scroll {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: 1.5rem 3.5rem;
+  gap: 1.25rem;
+  cursor: grab;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.tl-scroll:active {
+  cursor: grabbing;
+}
+
+.tl-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+.tl-scroll::-webkit-scrollbar-track {
+  background: rgba(from var(--secondary-color) r g b / 0.04);
+  border-radius: 2px;
+}
+.tl-scroll::-webkit-scrollbar-thumb {
+  background: rgba(from var(--secondary-color) r g b / 0.22);
+  border-radius: 2px;
+}
+.tl-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(from var(--secondary-color) r g b / 0.45);
+}
+
+/* ── Item (columna: spacer + card + conector + nodo + conector + spacer) ──── */
+.tl-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 260px;
+  scroll-snap-align: center;
+}
+
+.tl-spacer {
+  height: 185px; /* misma altura que la card + gaps */
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* ── Sobreescritura puntual de .card para el timeline ─────────────────────── */
+.tl-card {
+  width: 100%;
+  flex: none; /* anula el flex: 0 0 33% del carousel */
+  cursor: pointer; /* cambia de cursor: default a pointer */
+  padding: 1.1rem; /* padding más compacto */
+  gap: 0.5rem;
+}
+
+/* La card "arriba" sube al hover; la de "abajo" baja */
+.tl-card--above:hover {
+  transform: translateY(-5px);
+}
+.tl-card--below:hover {
+  transform: translateY(5px);
+}
+
+/* Línea de acento: arriba para las que están encima, abajo para las de debajo */
+.tl-card--above::before {
+  top: 0;
+  bottom: auto;
+}
+.tl-card--below::before {
+  bottom: 0;
+  top: auto;
+}
+
+/* Accent color por tipo (prácticas = secondary, proyectos = azul) */
+.tl-card--project {
+  border-color: rgba(100, 200, 255, 0.1);
+}
+.tl-card--project:hover {
+  border-color: rgba(100, 200, 255, 0.35);
+  box-shadow: 0 10px 30px rgba(100, 200, 255, 0.12);
+}
+.tl-card--project::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #64c8ff 50%,
+    transparent 100%
+  );
+}
+
+/* ── Badge de tipo ────────────────────────────────────────────────────────── */
+.tl-badge {
+  display: inline-block;
+  font-family: "Orbitron", monospace;
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 3px;
+}
+
+.tl-badge--sm {
+  /* versión compacta dentro de la card */
+  font-size: 0.5rem;
+  letter-spacing: 1.5px;
+}
+
+.tl-badge--internship {
+  color: var(--secondary-color);
+  border: 1px solid rgba(from var(--secondary-color) r g b / 0.25);
+  padding: 0.2rem 0.6rem;
+}
+
+.tl-badge--project {
+  color: #64c8ff;
+  border: 1px solid rgba(100, 200, 255, 0.25);
+  padding: 0.2rem 0.6rem;
+}
+
+/* Badge sin borde dentro de la card (solo color) */
+.tl-card .tl-badge {
+  border: none;
+  padding: 0;
+}
+
+/* ── Tags del proyecto: color azul ───────────────────────────────────────── */
+.tl-card--project .tag {
+  color: #64c8ff;
+  background: rgba(100, 200, 255, 0.07);
+  border-color: rgba(100, 200, 255, 0.18);
+}
+
+/* ── Resumen ──────────────────────────────────────────────────────────────── */
+.tl-summary {
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: rgba(from var(--white) r g b / 0.55);
+  line-height: 1.5;
+  flex: 1;
+}
+
+/* ── Hint "VER DETALLES" ──────────────────────────────────────────────────── */
+.tl-hint {
+  font-family: "Orbitron", monospace;
+  font-size: 0.52rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--secondary-color);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.tl-card:hover .tl-hint {
+  opacity: 0.8;
+}
+.tl-card--project .tl-hint {
+  color: #64c8ff;
+}
+
+/* ── Conector vertical ────────────────────────────────────────────────────── */
+.tl-connector {
+  width: 1px;
+  height: 28px;
+  background: rgba(from var(--secondary-color) r g b / 0.25);
+  flex-shrink: 0;
+}
+.tl-card--project ~ .tl-connector,
+.tl-item:has(.tl-card--project) .tl-connector {
+  background: rgba(100, 200, 255, 0.2);
+}
+
+/* ── Nodo central ─────────────────────────────────────────────────────────── */
+.tl-node {
+  width: 10px;
+  height: 10px;
+  background: var(--background-color);
+  border: 2px solid rgba(from var(--secondary-color) r g b / 0.5);
+  transition: var(--transition-smooth);
+  flex-shrink: 0;
+  z-index: 2;
+}
+.tl-node--circle {
+  border-radius: 50%;
+}
+.tl-node--square {
+  border-radius: 2px;
+}
+
+.tl-item:hover .tl-node--square {
+  width: 14px;
+  height: 14px;
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 14px rgba(from var(--secondary-color) r g b / 0.8);
+}
+.tl-item:hover .tl-node--circle {
+  width: 14px;
+  height: 14px;
+  background: #64c8ff;
+  border-color: #64c8ff;
+  box-shadow: 0 0 14px rgba(100, 200, 255, 0.8);
+}
+
+/* ── Hint global inferior ─────────────────────────────────────────────────── */
+.tl-hint-global {
+  text-align: center;
+  font-family: "Orbitron", monospace;
+  font-size: 0.52rem;
+  letter-spacing: 2px;
+  color: rgba(from var(--white) r g b / .80);
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   PÁGINA DE DETALLE
+   ══════════════════════════════════════════════════════════════════════════ */
+.tl-detail {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--background-color);
+  color: var(--text-color);
+  overflow-y: auto;
+  animation: tl-slide-in 0.3s ease;
+}
+
+@keyframes tl-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tl-detail-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 4rem;
+}
+
+/* Botón volver — hereda la estética de .card */
+.tl-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: 1px solid rgba(from var(--secondary-color) r g b / 0.2);
+  color: rgba(from var(--secondary-color) r g b / 0.55);
+  cursor: pointer;
+  font-family: "Orbitron", monospace;
+  font-size: 0.62rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: var(--transition-smooth);
+  margin-bottom: 2.5rem;
+}
+.tl-back-btn:hover {
+  color: var(--secondary-color);
+  border-color: rgba(from var(--secondary-color) r g b / 0.5);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Título de detalle */
+.tl-detail-title {
+  font-family: "Orbitron", monospace;
+  font-size: clamp(1.2rem, 3vw, 1.9rem);
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0.75rem 0 0.6rem;
+  text-shadow: 0 0 30px rgba(from var(--secondary-color) r g b / 0.3);
+}
+
+.tl-detail-divider {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--secondary-color), transparent);
+  margin-bottom: 2rem;
+}
+
+/* Grid de metadata */
+.tl-detail-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid rgba(from var(--secondary-color) r g b / 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.tl-meta-item {
+  background: rgba(from var(--primary-color) r g b / 0.04);
+  border-top: 1px solid rgba(from var(--secondary-color) r g b / 0.07);
+  padding: 0.9rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.tl-meta-item--full {
+  grid-column: 1 / -1;
+}
+
+.tl-meta-label {
+  font-family: "Orbitron", monospace;
+  font-size: 0.52rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(from var(--secondary-color) r g b / 0.4);
+}
+
+.tl-meta-value {
+  font-size: 0.88rem;
+  color: rgba(from var(--white) r g b / 0.75);
+}
+
+/* Tags en detalle */
+.tl-detail-tags-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+/* Cuerpo del detalle */
+.tl-detail-body {
+  border-top: 1px solid rgba(from var(--secondary-color) r g b / 0.1);
+  padding-top: 2rem;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: rgba(from var(--white) r g b / 0.65);
+  line-height: 1.9;
+  white-space: pre-line;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .tl-item {
+    width: 80vw;
+  }
+  .tl-spacer {
+    height: 170px;
+  }
+}

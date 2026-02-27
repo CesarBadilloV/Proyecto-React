@@ -1,16 +1,19 @@
 import MyInfo from "./MyInfo";
-import Experience from "./Experience";
+import Objective from "./Objective";
 import Photo from "./photo";
+import Timeline from "./TimeLine";
+import Education from "./Education";
 
 export default function AboutMe() {
   return (
     <>
     <div className="parent">
-
       <MyInfo />
-      <Experience />
+      <Objective />
       <Photo />
     </div>
+      <Timeline />
+      <Education />
     </>
   );
 }
